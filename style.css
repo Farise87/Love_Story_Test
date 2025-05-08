@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 50vh;
+}
+
+/* 计时器样式 */
+.timer-container {
+    text-align: center;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.timer-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.timer span {
+    display: inline-block;
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+/* 向日葵样式 */
+.sunflower-container {
+    width: 150px;
+    height: 250px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.sunflower {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: sway 5s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+.face {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    top: 30px;
+    left: 35px;
+    z-index: 2;
+}
+
+.petals {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, transparent 30%, #FFD700 30%);
+    border-radius: 50%;
+    top: 0;
+    left: 5px;
+    z-index: 1;
+    box-shadow: 0 0 0 15px #FFD700;
+}
+
+.stem {
+    position: absolute;
+    width: 10px;
+    height: 150px;
+    background-color: #228B22;
+    top: 100px;
+    left: 70px;
+    z-index: 0;
+}
+
+.leaves {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #32CD32;
+    border-radius: 50%;
+    top: 150px;
+    left: 80px;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.leaves::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #32CD32;
+    border-radius: 50%;
+    top: 10px;
+    left: -30px;
+    transform: rotate(-90deg);
+}
+
+@keyframes sway {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* 音乐控制样式 */
+.music-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* 黑胶唱片机样式 */
+.vinyl-player-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    transition: height 1s ease;
+}
+
+.vinyl-player {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transition: transform 1.5s ease;
+}
+
+.record {
+    width: 250px;
+    height: 250px;
+    background-color: #111;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 1.5s ease;
+    animation-play-state: paused;
+}
+
+.record-label {
+    width: 100px;
+    height: 100px;
+    background-color: #d4af37;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.tonearm {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    transform-origin: top right;
+    transform: rotate(-30deg);
+    transition: transform 1s ease;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.tonearm-base {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #555;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.tonearm-arm {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 100px;
+    height: 5px;
+    background-color: #777;
+    transform-origin: top right;
+    transform: rotate(30deg);
+    z-index: 1;
+}
+
+.tonearm-head {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 15px;
+    height: 10px;
+    background-color: #999;
+    border-radius: 2px;
+    z-index: 3;
+}
+
+/* 唱片旋转动画 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 唱片机状态 */
+.vinyl-player-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+}
+
+.tonearm.playing {
+    transform: rotate(0deg);
+}
+
+.record.playing {
+    animation: spin 10s linear infinite;
+    animation-play-state: running;
+}
+
+/* 全屏页面样式调整 */
+.vinyl-section {
+    background-color: #1a1a1a;
+}
+
+.timer-section {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .timer-text {
+        font-size: 1.2rem;
+    }
+    
+    .timer {
+        font-size: 1.5rem;
+    }
+    
+    .sunflower-container {
+        width: 120px;
+        height: 200px;
+    }
+    
+    .face {
+        width: 60px;
+        height: 60px;
+        top: 25px;
+        left: 30px;
+    }
+    
+    .petals {
+        width: 110px;
+        height: 110px;
+        top: 0;
+        left: 5px;
+        box-shadow: 0 0 0 12px #FFD700;
+    }
+    
+    .stem {
+        height: 120px;
+        top: 85px;
+        left: 55px;
+    }
+    
+    /* 黑胶唱片机响应式 */
+    .vinyl-player {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .record {
+        width: 200px;
+        height: 200px;
+        top: 25px;
+        left: 25px;
+    }
+    
+    .tonearm {
+        top: 40px;
+        right: 25px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .timer-text {
+        font-size: 1rem;
+    }
+    
+    .timer {
+        font-size: 1.2rem;
+    }
+    
+    .sunflower-container {
+        width: 100px;
+        height: 180px;
+    }
+    
+    .face {
+        width: 50px;
+        height: 50px;
+        top: 20px;
+        left: 25px;
+    }
+    
+    /* 黑胶唱片机小屏幕响应式 */
+    .vinyl-player {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .record {
+        width: 160px;
+        height: 160px;
+        top: 20px;
+        left: 20px;
+    }
+    
+    .record-label {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .tonearm {
+        top: 30px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .tonearm-arm {
+        width: 70px;
+        height: 4px;
+    }
+    
+    .vinyl-player-section.initial .vinyl-player {
+        transform: translateY(150px) scale(1.3);
+    }
+    
+    .vinyl-player-section.collapsed {
+        height: 40vh;
+    }
+    
+    .petals {
+        width: 90px;
+        height: 90px;
+        top: 0;
+        left: 5px;
+        box-shadow: 0 0 0 10px #FFD700;
+    }
+    
+    .stem {
+        height: 100px;
+        top: 70px;
+        left: 45px;
+    }
+}
