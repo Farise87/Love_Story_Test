@@ -1,0 +1,468 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(135deg, #f8d76e, #fff5e0);
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+.player{
+    background-color: #d52831;
+    width:330px;
+    height: 190px;
+    position:absolute;
+    transform: translate(-50%,-50%);
+    left:50%;
+    top:50%;
+    border-radius: 10px;
+    box-shadow: 0 8px 0 0 #be2728;
+
+}
+.record{
+    width:175px;
+    height: 175px;
+    background-color: #181312;
+    position:absolute;
+    border-radius: 50%;
+    top:10px;
+    left:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.record:before,
+.record:after{
+    content:' ';
+    position:absolute;
+    border:5px solid transparent;
+    border-top-color:#2c2424;
+    border-bottom-color:#2c2424;
+    border-radius:50%;
+}
+.record:before{
+    width:135px;
+    height: 135px;
+}
+.record:after{
+    width:95px;
+    height: 95px;
+}
+.label{
+    height: 15px;
+    width: 15px;
+    background-color: #181312;
+    border:20px solid #ff8e00;
+    border-radius: 50%;
+
+}
+.tone-arm{
+    height:90px;
+    width:6px;
+    background-color: #ffffff;
+    position:absolute;
+    top:25px;
+    right:95px;
+    transform:1s;
+    transform-origin:top;
+
+}
+
+.control{
+    background-color: #181312;
+    width:17px;
+    height:17px;
+    border:10px solid #2c2c2c;
+    border-radius: 50%;
+    position:absolute;
+    top:-16px;
+    left:-16px;
+}
+.tone-arm:before{
+    content:" ";
+    position: absolute;
+    height: 40px;
+    width:6px;
+    background-color: #ffffff;
+    transform: rotate(30deg);
+    bottom:-36px;
+    right:10px;
+}
+.tone-arm:after{
+    content:" ";
+    position: absolute;
+    height: 0px;
+    width:10px;
+    border-top:18px solid #b2aea6;
+    border-left:2px solid transparent;
+    border-right:2px solid transparent;
+    top:108px;
+    right:12.5px;
+    transform: rotate(30deg);
+    
+}
+.btn{
+    width: 28px;
+    height:28px;
+    background-color: #ed5650;
+    border-radius: 50%;
+    position: absolute;
+    bottom:20px;
+    right:30px;
+    border:none;
+    border:3.5px solid rgb(190,39,42);
+    outline:none;
+    cursor: pointer;
+}
+.slider{
+    -webkit-appearance: none;
+    appearance: none;
+    transform: rotate(-90deg);
+    width: 90px;
+    height:7px;
+    position: absolute;
+    left:233px;
+    top:60px;
+    background-color: #be272a;
+    outline: none;
+    border-radius: 3px;
+    border: 6px solid #ed5650;
+}
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance:none;
+    width:10px;
+    height:12px;
+    background-color: #ffffff;
+    cursor: pointer;
+
+}
+.play{
+    transform:rotate(30deg);
+    transform-origin: top;
+    transition: 1s;
+}
+.on{
+    animation: spin 3s 1s linear infinite ;
+}
+@keyframes spin{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* 向日葵样式 */
+.sunflowers-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sunflower {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: auto;
+}
+
+.sunflower:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+}
+
+.sunflower-center {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #654321;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: centerRotate 10s infinite linear;
+}
+
+.sunflower-petal {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(to top, #FFA500, #FFD700);
+    border-radius: 50% 50% 0 0;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    animation: petalWave 3s infinite alternate ease-in-out;
+}
+
+/* 创建12个花瓣 */
+.sunflower-petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+.sunflower-petal:nth-child(2) { transform: translate(-50%, -100%) rotate(30deg); }
+.sunflower-petal:nth-child(3) { transform: translate(-50%, -100%) rotate(60deg); }
+.sunflower-petal:nth-child(4) { transform: translate(-50%, -100%) rotate(90deg); }
+.sunflower-petal:nth-child(5) { transform: translate(-50%, -100%) rotate(120deg); }
+.sunflower-petal:nth-child(6) { transform: translate(-50%, -100%) rotate(150deg); }
+.sunflower-petal:nth-child(7) { transform: translate(-50%, -100%) rotate(180deg); }
+.sunflower-petal:nth-child(8) { transform: translate(-50%, -100%) rotate(210deg); }
+.sunflower-petal:nth-child(9) { transform: translate(-50%, -100%) rotate(240deg); }
+.sunflower-petal:nth-child(10) { transform: translate(-50%, -100%) rotate(270deg); }
+.sunflower-petal:nth-child(11) { transform: translate(-50%, -100%) rotate(300deg); }
+.sunflower-petal:nth-child(12) { transform: translate(-50%, -100%) rotate(330deg); }
+
+/* 花瓣摆动动画 */
+@keyframes petalWave {
+    0% { transform: translate(-50%, -100%) rotate(var(--rotate)) scale(1); }
+    50% { transform: translate(-50%, -100%) rotate(calc(var(--rotate) + 5deg)) scale(1.05); }
+    100% { transform: translate(-50%, -100%) rotate(var(--rotate)) scale(1); }
+}
+
+/* 花盘旋转动画 */
+@keyframes centerRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 里程碑向日葵容器 */
+.milestone-sunflowers {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 300px;
+    justify-content: flex-end;
+}
+
+.milestone-sunflowers .sunflower {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.milestone-label {
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 花瓣/星光粒子效果 */
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.petal {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+    animation: falling linear infinite;
+}
+
+.petal.flower {
+    width: 15px;
+    height: 15px;
+    background-image: radial-gradient(circle at center, #ffb6c1 40%, transparent 60%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+}
+
+.petal.star {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.7);
+    animation: twinkle 3s infinite alternate ease-in-out, falling linear infinite;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 7px 2px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+        opacity: 0.3;
+        box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* 心跳波形边框 */
+.heartbeat-border {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    border: none;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.heartbeat-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    border-image: linear-gradient(90deg, 
+        transparent 0%, #ff6b6b 15%, #ff6b6b 20%, 
+        transparent 30%, transparent 40%, 
+        #ff6b6b 45%, #ff9999 50%, #ff6b6b 55%,
+        transparent 60%, transparent 70%,
+        #ff6b6b 80%, #ff6b6b 85%, transparent 100%) 1;
+    animation: heartbeat 4s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    border-radius: 15px;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    25% {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    75% {
+        transform: scale(1.03);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* 时间计数器样式 */
+.time-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    text-align: center;
+    color: #d52831;
+}
+
+.time-counter h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.counter {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.counter span {
+    display: inline-block;
+    background-color: #d52831;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .player {
+        top: 40%;
+    }
+    
+    .sunflower {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .sunflower-center {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .sunflower-petal {
+        width: 15px;
+        height: 22px;
+    }
+    
+    .time-counter {
+        left: 10px;
+        bottom: 10px;
+        padding: 10px;
+    }
+    
+    .time-counter h2 {
+        font-size: 1rem;
+    }
+    
+    .counter {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sunflower {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .sunflower {
+        width: 55px;
+        height: 55px;
+    }
+}
