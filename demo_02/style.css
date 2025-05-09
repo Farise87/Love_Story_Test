@@ -329,56 +329,70 @@ body{
     }
 }
 
-/* 心跳波形边框 */
+/* 心跳波形边框 - 心形样式 */
 .heartbeat-border {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 80vh;
+    width: 60vw;
+    height: 60vh;
     border: none;
     z-index: 0;
     pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+.heartbeat-border::before,
+.heartbeat-border::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 45%;
+    background: transparent;
+    border: 3px solid #ff6b6b;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.7), inset 0 0 10px rgba(255, 107, 107, 0.3);
+    animation: heartbeat 4s infinite ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+    top: 28%;
 }
 
 .heartbeat-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid transparent;
-    border-image: linear-gradient(90deg, 
-        transparent 0%, #ff6b6b 15%, #ff6b6b 20%, 
-        transparent 30%, transparent 40%, 
-        #ff6b6b 45%, #ff9999 50%, #ff6b6b 55%,
-        transparent 60%, transparent 70%,
-        #ff6b6b 80%, #ff6b6b 85%, transparent 100%) 1;
-    animation: heartbeat 4s infinite ease-in-out;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-    border-radius: 15px;
+    left: 35%;
+    transform: rotate(45deg) skew(15deg, 15deg);
+    transform-origin: bottom right;
+}
+
+.heartbeat-border::after {
+    right: 35%;
+    transform: rotate(-45deg) skew(-15deg, -15deg);
+    transform-origin: bottom left;
 }
 
 @keyframes heartbeat {
     0% {
+        transform-origin: inherit;
         transform: scale(1);
         opacity: 0.7;
     }
     25% {
-        transform: scale(1.02);
+        transform-origin: inherit;
+        transform: scale(1.05);
         opacity: 0.9;
     }
     50% {
+        transform-origin: inherit;
         transform: scale(1);
         opacity: 0.7;
     }
     75% {
-        transform: scale(1.03);
+        transform-origin: inherit;
+        transform: scale(1.08);
         opacity: 0.9;
     }
     100% {
+        transform-origin: inherit;
         transform: scale(1);
         opacity: 0.7;
     }
